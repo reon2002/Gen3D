@@ -1,0 +1,62 @@
+{% load static %} <!----loaded static folder--->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gen3D - 2D Image</title>
+    <link rel="stylesheet" href="{% static 'css/generate.css' %}">
+    {% csrf_token %}
+</head>
+<body>
+    <div class="container">
+        <!-- Navbar -->
+        <div class="navbar">
+            <div class="left">
+                <a href="{% url 'landing' %}" style="color:black;text-decoration: none;"><h1 class="title">Gen3D</h1></a>
+            </div>
+            <div class="right">
+                <a href="{% url 'prompt' %}"><div class="newProject">
+                    <h3>New Project</h3>
+                </div></a>
+                <div class="user">
+                    <h3>Reon</h3>
+                    <select id="userSettings">
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2D Image Gen -->
+        <div class="inner-container">
+            <!-- 2D Image on the left -->
+            <div class="imageDisplay">
+                <!-- Display the generated image here -->
+                <img src="data:image/png;base64,{{ generated_image }}" alt="Generated Image">
+            </div>
+            <!-- Image Details and Generate Button on the right -->
+            <div class="imageDetails">
+                <h1>{{ selected_text }}</h1>
+            </div>
+        </div>
+
+        <!-- Generate Buttons -->
+        <div class="generateButtons">
+            <div class="regenerate">
+                <button onclick="pageReload()">REGENERATE</button>
+            </div>
+            <div class="gen3d">
+                <button onclick="goGen3d()">GENERATE 3D➡️</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function pageReload(){
+            location.reload();
+        }
+        function goGen3d(){
+            window.location.href="{% url 'gen3d' %}";
+        }
+    </script>
+</body>
+</html>

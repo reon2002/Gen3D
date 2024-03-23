@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gen3D - Prompt Suggestions</title>
+    <link rel="stylesheet" href="{% static 'css/ranking.css' %}">
+    {% csrf_token %}
+</head>
+<body>
+    <div class="container">
+        <!-- Navbar -->
+        <div class="navbar">
+            <div class="left">
+                <a href="{% url 'landing' %}" style="color:black;text-decoration: none;"><h1 class="title">Gen3D</h1></a>
+            </div>
+            <div class="right">
+                <a href="{% url 'prompt' %}"><div class="newProject">
+                    <h3>New Project</h3>
+                </div></a>
+                <div class="user">
+                    <h3>Reon</h3>
+                    <select id="userSettings">
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- rankings.html -->
+        <div class="promptArea">
+            <div class="question">
+                <h3>Here are our top suggestions. Choose one:</h3>
+            </div>
+            <div class="rankings">
+                {% for prompt in prompts %}
+                <div class="item">
+                    <div class="text">
+                        <!-- <h3>{{ forloop.counter }}. {{ prompt }}</h3> -->
+                        <h3>{{ prompt }}</h3>
+                    </div>
+                    <!-- <div class="generate">
+                        <a href="{% url 'generate' %}"><button>></button></a>
+                    </div> -->
+                    <div class="generate">
+                        <form method="get" action="{% url 'generate' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="prompt_text" value="{{ prompt }}">
+                            <button>></button>
+                        </form>
+                        <!-- HTML template example -->
+                        
+                            
+                    
+
+
+                        <!-- <a href="{% url 'generate' %}"><button>></button></a> -->
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+
+        
+    </div>
+</body>
+</html>

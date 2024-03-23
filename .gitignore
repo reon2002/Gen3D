@@ -1,0 +1,6 @@
+/venv
+/virtual
+*.pyc
+__pycache__/
+/myproject/myapp/constants.py
+/myproject/myapp/stable-diffusion-webui

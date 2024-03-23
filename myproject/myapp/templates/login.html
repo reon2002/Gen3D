@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gen3D - Login</title>
+    <link rel="stylesheet" href="{% static 'css/login_user.css' %}">
+
+    {% csrf_token %}
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <a href="{% url 'landing' %}" style="color:black;text-decoration: none;"><h1 class="title">Gen3D</h1></a>
+            <div class="image">
+                <img src="{% static 'images/3d-rendering-house-model-removebg-preview.png' %}" width="550">
+            </div>
+        </div>
+        <div class="right-section">
+            <p class="text">Welcome Back!</p>
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="username" class="input-box" required>
+                <input type="password" name="password" placeholder="password" class="input-box" required>
+                <input type="submit" value="Continue" class="button">
+                {% if error_message %}
+                    <p style="color: red;">{{ error_message }}</p>
+                {% endif %}
+            </form>
+            <a href="{% url 'signup' %}" class="newUser">New in here?</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+django>=5.0.1
+transformers
+Psycopg2
+
+langchain
+openai
+langchain-openai

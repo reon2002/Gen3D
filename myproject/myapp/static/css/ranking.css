@@ -1,0 +1,122 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+body{
+    background-color:black;
+}
+
+.navbar{
+    height:80px;
+    background-color: #FFDFB5;
+    display: flex;
+}
+
+.left{
+    margin-left:20px;
+    justify-content:center;
+    display:flex;
+    align-items:center;
+    text-align:left;
+    margin-right:auto;
+}
+
+.right{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-left:auto;
+    margin-right:20px;
+}
+
+.newProject{
+    padding:10px;
+    background-color:black;
+    color:white;
+    margin-right:20px;
+}
+
+.right{
+    text-align:right;
+}
+
+.right a{
+    text-decoration:none;
+}
+
+.user{
+    display:flex;
+    padding:10px;
+    background-color:black;
+    color:white;
+}
+
+.user select{
+    background-color:black;
+    color:white;
+    border:none;
+    margin-left:5px;
+}
+
+.promptArea{
+    margin-top:100px;
+    margin-left:50px;
+}
+
+.question h3{
+    color:white;
+    font-size:30px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.question{
+    margin-bottom:20px;
+}
+
+
+
+.item{
+    width:80%;
+    background-color:#FFDFB5;
+    height:50px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:15px;
+    margin-bottom:5px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.text{
+    /* color:white; */
+    margin-right:auto;
+    margin-left:20px;
+    font-size:18px;
+}
+
+.generate{
+    margin-right:0px;
+    /* margin-left:auto; */
+}
+
+.generate button{
+    font-weight:bold;
+    width:40px;
+    height:auto;
+    background-color: #daa662;
+    color:white;
+    border:none;
+    padding:14px;
+    border-radius:12px 15px 15px 12px;
+    font-size:20px;
+    cursor:pointer;
+    transition:0.3s;
+
+}
+
+.generate button:hover{
+    background-color:white;
+    color:#786F52;
+    transition:0.5s;
+}

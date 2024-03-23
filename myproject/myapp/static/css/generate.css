@@ -1,0 +1,142 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    max-width: 100%; /* Set maximum width to the window size */
+    overflow-x: hidden; /* Hide horizontal overflow */
+}
+
+.navbar {
+    height: 80px;
+    background-color: #FFDFB5;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+}
+
+.left {
+    margin-left:20px;
+    justify-content:center;
+    display:flex;
+    align-items:center;
+    text-align:left;
+    margin-right:auto;
+}
+
+.right {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-left:auto;
+    margin-right:20px;
+    text-align:right;
+}
+
+.right a {
+    text-decoration:none;
+}
+
+.newProject {
+    padding: 10px;
+    background-color: black;
+    color: white;
+    margin-right: 20px;
+}
+
+.user {
+    display:flex;
+    padding:10px;
+    background-color:black;
+    color:white;
+}
+
+.user select {
+    background-color: black;
+    color: white;
+    border: none;
+    margin-left: 5px;
+}
+
+.inner-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.imageDisplay {
+    flex-shrink: 0;
+    margin-right: 20px;
+}
+
+.imageDisplay img {
+    max-width: 100%;
+    max-height: 480px;
+    height: auto;
+    border: 2px solid #FFDFB5;
+}
+
+.imageDetails {
+    flex-grow: 1;
+    margin-right: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.imageDetails h3{
+    font-weight:normal;
+}
+
+.generateButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.regenerate button,
+.gen3d button {
+    padding: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
+    width:200px;
+    border-radius: 10px;
+    font-weight:bold;
+    color:white;
+}
+
+.regenerate button {
+    background-color: #786F52;
+}
+
+.gen3d button {
+    background-color: #11a9f5;
+}
+
+.regenerate button:hover,
+.gen3d button:hover {
+    background-color: white;
+    transition: 0.3s;
+}
+
+.regenerate button:hover {
+    color: #786F52;
+}
+
+.gen3d button:hover {
+    color: #11a9f5;
+}

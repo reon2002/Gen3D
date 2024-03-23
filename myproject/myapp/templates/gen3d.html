@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gen3D - Interactive</title>
+    <link rel="stylesheet" href="{% static 'css/gen3d.css' %}">
+    {% csrf_token %}
+</head>
+<body>
+    <div class="container">
+        <!-- Navbar -->
+        <div class="navbar">
+            <div class="left">
+                <a href="{% url 'landing' %}" style="color:black;text-decoration: none;"><h1 class="title">Gen3D</h1></a>
+            </div>
+            <div class="right">
+                <a href="{% url 'prompt' %}"><div class="newProject">
+                    <h3>New Project</h3>
+                </div></a>
+                <div class="user">
+                    <h3>Reon</h3>
+                    <select id="userSettings">
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2D Image Gen -->
+        <div class="inner-container">
+            <!-- 2D Image on the left -->
+            <div class="imageDisplay">
+                <img src="{% static 'images/bedroom_angle1.jpg' %}" alt="Generated Image">
+            </div>
+        </div>
+
+        <!-- Generate Buttons -->
+        <div class="generateButtons">
+            <!-- Off-canvas button -->
+            <div class="help">
+                <button id="helpButton">Help</button>
+            </div>
+
+            <div class="fullscreen">
+                <button>Fullscreen</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Off-canvas content -->
+    <div id="offcanvas" class="offcanvas">
+        <div class="offcanvas-content">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title">Tutorial</h5>
+                <!-- <button id="closeButton hiddenButton" class="btn-close"></button> -->
+            </div>
+            <div class="offcanvas-body">
+                <div class="tutorial-step"><span style="font-weight:bold;">Zooming</span>: Pinch or roll for zoom in and out.</div>
+                <div class="tutorial-step"><span style="font-weight:bold;">Panning</span>: Left click and drag the model for panning.</div>
+                <div class="tutorial-step"><span style="font-weight:bold;">Rotating</span>: Right click and drag the model for rotating.</div>
+            </div>
+            <button id="closeButtonInside" class="btn-close">Close</button>
+        </div>
+    </div>
+    <script src="{% static 'js/gen3d.js' %}"></script>
+    <script>
+        // JavaScript to hide the button with class "hiddenButton"
+        document.addEventListener('DOMContentLoaded', function () {
+            var hiddenButton = document.querySelector('.hiddenButton');
+            hiddenButton.style.display = 'none';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+body{
+    background-color:black;
+}
+
+.navbar{
+    height:80px;
+    background-color: #FFDFB5;
+    display: flex;
+}
+
+.left{
+    margin-left:20px;
+    justify-content:center;
+    display:flex;
+    align-items:center;
+    text-align:left;
+    margin-right:auto;
+}
+
+.right{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-left:auto;
+    margin-right:20px;
+}
+
+.newProject{
+    padding:10px;
+    background-color:black;
+    color:white;
+    margin-right:20px;
+}
+
+.right{
+    text-align:right;
+}
+
+.right a{
+    text-decoration:none;
+}
+
+.user{
+    display:flex;
+    padding:10px;
+    background-color:black;
+    color:white;
+}
+
+.user select{
+    background-color:black;
+    color:white;
+    border:none;
+    margin-left:5px;
+}
+
+.promptArea{
+    margin-top:100px;
+    margin-left:50px;
+}
+
+.question h3{
+    color:white;
+    font-size:30px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.question{
+    margin-bottom:20px;
+}
+
+.prompt{
+    height:200px;
+    width:80%;
+    background-color:#FFDFB5;
+    border-radius:20px;
+    text-align:left;
+    font-size:20px;
+    padding:20px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.generate{
+    padding:12px;
+    width:15%;
+    font-size:20px;
+    background-color:#786F52;
+    color:white;
+    border-radius:15px;
+    transition:0.3s;
+}
+
+.generate:hover{
+    background-color:white;
+    color:#786F52;
+    transition:0.3s;
+    cursor:pointer;
+}

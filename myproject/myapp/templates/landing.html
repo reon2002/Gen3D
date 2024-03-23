@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gen3D - Find your perfect design</title>
+    <link rel="stylesheet" href="static/css/landing.css">
+    {% csrf_token %}
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <a href="{% url 'landing' %}" style="color:black;text-decoration: none;"><h1 class="title">Gen3D</h1></a>
+            <div class="image">
+                <img src="static/images/3d-rendering-house-model-removebg-preview.png" width="550">
+            </div>
+        </div>
+        <div class="right-section">
+            <p class="text">Get Started</p>
+            <div class="button-row">
+                <a href="{% url 'login' %}"><button class="button">Log In</button></a>
+            </div>
+            <div class="button-row">
+                <a href="{% url 'signup' %}"><button class="button">Sign Up</button></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
