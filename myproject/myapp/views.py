@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login as auth_login
+from django.conf import settings
 import os
 from langchain_openai import OpenAI
 from .constants import openai_key
@@ -92,6 +93,16 @@ def generate(request):
         generated_image.save(buffered, format="PNG")
         image_str = base64.b64encode(buffered.getvalue()).decode()
 
+        # Get the directory of the current script
+        script_dir = os.path.dirname(os.path.realpath(__file__))
+
+        # Save the image to the '2Dimage' folder in the script directory
+        image_folder = os.path.join(script_dir, '2Dimage')
+        os.makedirs(image_folder, exist_ok=True)
+        image_filename = "generatedImage.png"
+        image_path = os.path.join(image_folder, image_filename)
+        generated_image.save(image_path)
+
         # Add the base64-encoded image data to the context
         context['generated_image'] = image_str
 
@@ -101,7 +112,19 @@ def generate(request):
 
 def gen3d(request):
     if request.method == "GET":
-        return render(request, 'gen3d.html')
+        try:
+            # Define the default image location
+            default_image_location = r"D:\StableDiffusion\TextGenerationCompleted\myproject\myapp\2Dimage\generatedImage.png"
+            default_save_location = r"D:\StableDiffusion\TextGenerationCompleted\myproject\myapp\outputs"
+
+            # Run the modified run.py script with the default image location as an argument
+            script_path = r"D:\StableDiffusion\TextGenerationCompleted\myproject\myapp\run.py"
+            print("Script path:", script_path)
+            subprocess.run(["python", script_path, default_image_location,"--output-dir", default_save_location], check=True)
+
+            return HttpResponse("3D model generation complete.")
+        except subprocess.CalledProcessError as e:
+            return HttpResponse(f"Error: {e}")
     else:
         return HttpResponse("Method not allowed")
 

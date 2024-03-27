@@ -1,5 +1,5 @@
 {% load static %}
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container">
-        <!-- Navbar -->
+        
         <div class="navbar">
             <div class="left">
                 <a href="{% url 'landing' %}" style="color:black;text-decoration: none;"><h1 class="title">Gen3D</h1></a>
@@ -27,7 +27,7 @@
             </div>
         </div>
 
-        <!-- Prompt Area -->
+        
         <div class="promptArea">
             <div class="question">
                 <h3>What's on your mind today?</h3>
@@ -62,4 +62,110 @@
         </script>
     </div>
 </body>
-</html>
+ </html> -->
+
+
+ {% load static %}
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Gen3D - Prompt</title>
+     <link rel="stylesheet" href="{% static 'css/prompt.css' %}">
+     {% csrf_token %}
+     <style>
+         /* CSS for loader */
+         #loader {
+             display: none;
+             position: fixed;
+             top: 50%;
+             left: 50%;
+             transform: translate(-50%, -50%);
+             z-index: 9999;
+         }
+ 
+         /* Style the loader animation */
+         #loader img {
+             width: 100px;
+         }
+ 
+         /* Hide the promptArea */
+         #promptArea {
+             display: block; /* Initially visible */
+         }
+ 
+         #promptArea.hidden {
+             display: none; /* Hidden when 'hidden' class is added */
+         }
+     </style>
+ </head>
+ <body>
+ <div class="container">
+     <!-- Navbar -->
+     <div class="navbar">
+         <div class="left">
+             <a href="{% url 'landing' %}" style="color:black;text-decoration: none;"><h1 class="title">Gen3D</h1></a>
+         </div>
+         <div class="right">
+             <a href="{% url 'prompt' %}"><div class="newProject">
+                 <h3>New Project</h3>
+             </div></a>
+             <div class="user">
+                 <h3>Reon</h3>
+                 <select id="userSettings">
+                 </select>
+             </div>
+         </div>
+     </div>
+ 
+     <!-- Prompt Area -->
+     <div id="promptArea" class="promptArea">
+         <div class="question">
+             <h3>What's on your mind today?</h3>
+         </div>
+         <form onsubmit="submitForm(); return false;">
+             {% csrf_token %}
+             <textarea id="prompt" class="prompt" cols="30" rows="10" placeholder="Example: A modern style bedroom with a bed and LED nightlamps, along with a picture of Audrey Hepburn on the wall." required></textarea>
+             <br>
+             <input type="submit" id="generate" class="generate" value="Generate" onclick="hidePrompt()">
+         </form>
+     </div>
+ 
+     <!-- Loader -->
+     <div id="loader">
+         <img src="{% static 'images/loader.gif' %}" alt="Loading...">
+     </div>
+ 
+     <script>
+         function hidePrompt() {
+             // Hide promptArea
+             document.getElementById("promptArea").classList.add("hidden");
+ 
+             // Show loader
+             document.getElementById("loader").style.display = "block";
+         }
+ 
+         function submitForm() {
+             // Get the text from the textarea
+             var promptText = document.getElementById("prompt").value;
+ 
+             // Check if the textarea is not empty
+             if (promptText.trim() === "") {
+                 alert("Please enter a prompt before generating.");
+                 return;
+             }
+ 
+             // Construct the URL with the text as a query parameter
+             var url = "rankings.html?prompt=" + encodeURIComponent(promptText);
+ 
+             // Redirect to the rankings.html page with the constructed URL after a delay (for demonstration)
+             setTimeout(function() {
+                 window.location.href = url;
+             }, 2000); // 2000 milliseconds (2 seconds) delay for demonstration
+         }
+     </script>
+ </div>
+ </body>
+ </html>
+ 

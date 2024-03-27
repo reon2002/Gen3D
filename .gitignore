@@ -4,3 +4,5 @@
 __pycache__/
 /myproject/myapp/constants.py
 /myproject/myapp/stable-diffusion-webui
+/myproject/myapp/run.py
+/myproject/myapp/tsr

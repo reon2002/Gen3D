@@ -7,10 +7,35 @@
     <title>Gen3D - Prompt Suggestions</title>
     <link rel="stylesheet" href="{% static 'css/ranking.css' %}">
     {% csrf_token %}
+    <style>
+        /* CSS for loader */
+        #loader {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+        }
+
+        /* Style the loader animation */
+        #loader img {
+            width: 100px;
+        }
+
+        /* Hide the promptArea */
+        #promptArea {
+            display: block; /* Initially visible */
+        }
+
+        #promptArea.hidden {
+            display: none; /* Hidden when 'hidden' class is added */
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <!-- Navbar -->
+
         <div class="navbar">
             <div class="left">
                 <a href="{% url 'landing' %}" style="color:black;text-decoration: none;"><h1 class="title">Gen3D</h1></a>
@@ -27,7 +52,6 @@
             </div>
         </div>
 
-        <!-- rankings.html -->
         <div class="promptArea">
             <div class="question">
                 <h3>Here are our top suggestions. Choose one:</h3>
@@ -36,26 +60,29 @@
                 {% for prompt in prompts %}
                 <div class="item">
                     <div class="text">
-                        <!-- <h3>{{ forloop.counter }}. {{ prompt }}</h3> -->
+                        
                         <h3>{{ prompt }}</h3>
                     </div>
-                    <!-- <div class="generate">
-                        <a href="{% url 'generate' %}"><button>></button></a>
-                    </div> -->
                     <div class="generate">
                         <form method="get" action="{% url 'generate' %}">
                             {% csrf_token %}
-                            <input type="hidden" name="prompt_text" value="{{ prompt }}">
-                            <button>></button>
+                            <input type="hidden" name="prompt_text" value="{{ prompt }}" >
+                            <button onclick="hidePrompt()">></button>
                         </form>
-                        <!-- HTML template example -->
-                        
-                            
-                    
-
-
-                        <!-- <a href="{% url 'generate' %}"><button>></button></a> -->
                     </div>
+                    <!-- Loader -->
+                    <div id="loader">
+                        <img src="{% static 'images/loader.gif' %}" alt="Loading...">
+                    </div>
+                    <script>
+                        function hidePrompt() {
+                            // Hide promptArea
+                            document.getElementById("promptArea").classList.add("hidden");
+                
+                            // Show loader
+                            document.getElementById("loader").style.display = "block";
+                        }
+                                    </script>
                 </div>
                 {% endfor %}
             </div>
