@@ -126,7 +126,7 @@
          </div>
          <form onsubmit="submitForm(); return false;">
              {% csrf_token %}
-             <textarea id="prompt" class="prompt" cols="30" rows="10" placeholder="Example: A modern style bedroom with a bed and LED nightlamps, along with a picture of Audrey Hepburn on the wall." required></textarea>
+             <textarea id="prompt" class="prompt" cols="30" rows="10" placeholder="Example: A modern styled red chair." required></textarea>
              <br>
              <input type="submit" id="generate" class="generate" value="Generate" onclick="hidePrompt()">
          </form>

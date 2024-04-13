@@ -124,7 +124,8 @@ def gen3d(request):
 
             return HttpResponse("3D model generation complete.")
         except subprocess.CalledProcessError as e:
-            return HttpResponse(f"Error: {e}")
+            # return HttpResponse(f"Error: {e}")
+            return render(request,"gen3d.html")
     else:
         return HttpResponse("Method not allowed")
 
@@ -134,7 +135,7 @@ def generate_descriptions(input_prompt):
 
     print("The input prompt recieved is:",input_prompt)
     print("\n\n")
-    template="Suggest three text descriptions for the following input prompt in less than 15 words for which image can be generated: "
+    template="Suggest three image-generatable text descriptions for the following input prompt in less than 15 words which is to be passed into a Stable Diffusion model for image-generation: "
     
     question=template+input_prompt
     print(question)
