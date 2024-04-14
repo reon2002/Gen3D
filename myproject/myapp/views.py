@@ -13,10 +13,11 @@ import os,io
 import requests
 import base64
 from PIL import Image
-import matplotlib.pyplot as plt
 import time
 from asgiref.sync import sync_to_async
 from pathlib import Path
+
+# BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 
 def landing(request):
     return render(request, 'landing.html')
@@ -68,7 +69,6 @@ def rankings(request):
         prompt_list = generate_descriptions(text)
         for phrase in prompt_list:
             phrase=phrase[4:-1]
-        # print(prompts)
         # return HttpResponse(prompts)
         return render(request, 'rankings.html', {'prompts': prompt_list})
     else:
@@ -110,24 +110,19 @@ def generate(request):
 
 
 
+
 def gen3d(request):
     if request.method == "GET":
         try:
-            BASE_DIR = Path(__file__).resolve().parent.parent
-            # Define the default image location
-            # default_image_location = r"D:\StableDiffusion\TextGenerationCompleted\myproject\myapp\2Dimage\generatedImage.png"
-            default_image_location = os.path.join(BASE_DIR, '/myapp/2Dimage/generatedImage.png')
-            default_save_location = os.path.join(BASE_DIR, '/myapp/outputs')
-            # default_save_location = r"D:\StableDiffusion\TextGenerationCompleted\myproject\myapp\outputs"
+            default_image_location = r"D:\StableDiffusion\TextGenerationCompleted\myproject\myapp\2Dimage\generatedImage.png"
+            default_save_location = r"D:\StableDiffusion\TextGenerationCompleted\myproject\myapp\outputs"
 
-            # Run the modified run.py script with the default image location as an argument
-            script_path = r"C:\mainProject\textTo2D\myproject\myapp\run.py"
+            script_path = r"D:\StableDiffusion\TextGenerationCompleted\myproject\myapp\run.py" #reon's PC
             print("Script path:", script_path)
             subprocess.run(["python", script_path, default_image_location,"--output-dir", default_save_location], check=True)
 
             return HttpResponse("3D model generation complete.")
         except subprocess.CalledProcessError as e:
-            # return HttpResponse(f"Error: {e}")
             return render(request,"gen3d.html")
     else:
         return HttpResponse("Method not allowed")
