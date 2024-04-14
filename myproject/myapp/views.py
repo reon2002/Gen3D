@@ -16,7 +16,7 @@ from PIL import Image
 import matplotlib.pyplot as plt
 import time
 from asgiref.sync import sync_to_async
-
+from pathlib import Path
 
 def landing(request):
     return render(request, 'landing.html')
@@ -113,12 +113,15 @@ def generate(request):
 def gen3d(request):
     if request.method == "GET":
         try:
+            BASE_DIR = Path(__file__).resolve().parent.parent
             # Define the default image location
-            default_image_location = r"D:\StableDiffusion\TextGenerationCompleted\myproject\myapp\2Dimage\generatedImage.png"
-            default_save_location = r"D:\StableDiffusion\TextGenerationCompleted\myproject\myapp\outputs"
+            # default_image_location = r"D:\StableDiffusion\TextGenerationCompleted\myproject\myapp\2Dimage\generatedImage.png"
+            default_image_location = os.path.join(BASE_DIR, '/myapp/2Dimage/generatedImage.png')
+            default_save_location = os.path.join(BASE_DIR, '/myapp/outputs')
+            # default_save_location = r"D:\StableDiffusion\TextGenerationCompleted\myproject\myapp\outputs"
 
             # Run the modified run.py script with the default image location as an argument
-            script_path = r"D:\StableDiffusion\TextGenerationCompleted\myproject\myapp\run.py"
+            script_path = r"C:\mainProject\textTo2D\myproject\myapp\run.py"
             print("Script path:", script_path)
             subprocess.run(["python", script_path, default_image_location,"--output-dir", default_save_location], check=True)
 
@@ -134,7 +137,7 @@ def generate_descriptions(input_prompt):
 
     print("The input prompt recieved is:",input_prompt)
     print("\n\n")
-    template="Suggest three text descriptions for the following input prompt in less than 15 words for which image can be generated: "
+    template="Suggest three image-generatable text descriptions for the following input prompt in less than 15 words which is to be passed into a Stable Diffusion model for image-generation: "
     
     question=template+input_prompt
     print(question)
@@ -158,7 +161,7 @@ def pass_to_sdm(selected_prompt):
     api_url = "http://127.0.0.1:7861/sdapi/v1/txt2img"
     payload = {
         "prompt": selected_prompt,
-        "steps": 20
+        "steps": 40
     }
 
     try:

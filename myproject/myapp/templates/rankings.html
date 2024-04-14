@@ -71,24 +71,26 @@
                         </form>
                     </div>
                     <!-- Loader -->
-                    <div id="loader">
-                        <img src="{% static 'images/loader.gif' %}" alt="Loading...">
-                    </div>
-                    <script>
-                        function hidePrompt() {
-                            // Hide promptArea
-                            document.getElementById("promptArea").classList.add("hidden");
-                
-                            // Show loader
-                            document.getElementById("loader").style.display = "block";
-                        }
-                                    </script>
+                    
                 </div>
                 {% endfor %}
             </div>
         </div>
         
-
+        <div id="loader">
+            <img src="{% static 'images/loader.gif' %}" alt="Loading...">
+        </div>
+        <script>
+            function hidePrompt() {
+                // Hide promptArea
+                var promptArea = document.querySelector(".promptArea");
+                promptArea.style.display = "none";
+        
+                // Show loader
+                document.getElementById("loader").style.display = "block";
+            }
+        </script>
+        
         
     </div>
 </body>
