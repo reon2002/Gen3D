@@ -127,7 +127,8 @@ def gen3d(request):
 
             return HttpResponse("3D model generation complete.")
         except subprocess.CalledProcessError as e:
-            return HttpResponse(f"Error: {e}")
+            # return HttpResponse(f"Error: {e}")
+            return render(request,"gen3d.html")
     else:
         return HttpResponse("Method not allowed")
 
