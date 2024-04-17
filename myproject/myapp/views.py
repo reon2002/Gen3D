@@ -115,13 +115,14 @@ def gen3d(request):
     if request.method == "GET":
         try:
             default_image_location = r"D:\StableDiffusion\TextGenerationCompleted\myproject\myapp\2Dimage\generatedImage.png"
-            default_save_location = r"D:\StableDiffusion\TextGenerationCompleted\myproject\myapp\outputs"
+            default_save_location = r"D:\StableDiffusion\TextGenerationCompleted\myproject\myapp\static"
 
             script_path = r"D:\StableDiffusion\TextGenerationCompleted\myproject\myapp\run.py" #reon's PC
             print("Script path:", script_path)
             subprocess.run(["python", script_path, default_image_location,"--output-dir", default_save_location], check=True)
 
-            return HttpResponse("3D model generation complete.")
+            # return HttpResponse("3D model generation complete.")
+            return render(request,"gen3d.html")
         except subprocess.CalledProcessError as e:
             return render(request,"gen3d.html")
     else:
