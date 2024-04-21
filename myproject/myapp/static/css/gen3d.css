@@ -4,8 +4,9 @@
 }
 
 body {
-    background-color: black;
+    background-color: rgb(0, 0, 0,0.9);
     color: white;
+    
 }
 
 .container {
@@ -14,9 +15,17 @@ body {
     align-items: center;
     min-height: 100vh;
     max-width: 100%; /* Set maximum width to the window size */
-    overflow-x: hidden; /* Hide horizontal overflow */
+    overflow-x: auto; /* Allow horizontal overflow */
+    overflow-y: hidden; /* Hide vertical overflow */
 }
 
+.inner-container.container3d {
+    width: 200px;
+    height: 300px;
+   
+
+ 
+}
 .navbar {
     height: 80px;
     background-color: #FFDFB5;
@@ -73,7 +82,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 50px;
+    /* margin-top: 50px; */
 }
 
 .imageDisplay {
@@ -89,6 +98,12 @@ body {
 }
 
 .generateButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.panButton {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -138,7 +153,7 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(255, 255, 255, 0.7);
     z-index: 1000;
     transition: opacity 0.3s ease, left 0.3s ease;
     opacity: 0;
@@ -203,4 +218,3 @@ body {
     color:#786F52;
     transition: 0.3s;
 }
-
