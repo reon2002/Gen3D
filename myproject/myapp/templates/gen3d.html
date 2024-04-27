@@ -24,23 +24,20 @@
                         <h3>New Project</h3>
                     </div>
                 </a>
-                <div class="user">
-                    <h3>Reon</h3>
-                    <select id="userSettings">
-                    </select>
-                </div>
+                <a href="{% url 'landing' %}"><div class="user">
+                    <h3>Logout</h3>
+                </div></a>
             </div>
         </div>
 
-        <!-- 3D Image Gen -->
+        <!-- 3D model Display -->
         <div class="inner-container">
-            <!-- 2D Image on the left -->
             <div class="imageDisplay" id="container3D">
                 <script type="module" src="{% static 'js/main.js' %}"></script>
             </div>
         </div>
 
-        <!-- Generate Buttons -->
+        <!-- User Interaction Buttons -->
         <div class="generateButtons">
             <!-- Off-canvas button -->
             <div class="help">

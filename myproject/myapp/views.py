@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login as auth_login
+from django.contrib.auth import logout
 from django.conf import settings
 import os
 from langchain_openai import OpenAI
@@ -15,9 +16,6 @@ import base64
 from PIL import Image
 import time
 from asgiref.sync import sync_to_async
-from pathlib import Path
-
-# BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 
 def landing(request):
     return render(request, 'landing.html')
@@ -53,6 +51,11 @@ def signup_user(request):
     else:
         form = UserCreationForm()
     return render(request, 'signup.html', {'form': form})
+
+def logout_user(request):
+    print("Logging out user:", request.user.username)
+    logout(request)
+    return redirect('landing')
     
 def prompt(request):
     if request.method == "GET":
